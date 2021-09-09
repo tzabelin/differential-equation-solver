@@ -6,71 +6,77 @@
 
 struct  Simple
 {
-	__device__ void operator()(const double *x, const double *y, double *k, const int &n)
+	__device__ void operator()(const double *args, double *k)
 	{
-		*k = sin(*x);
+		k[0] = sin(args[0]);
+		k[1] = cos(args[1]);
 	}
 };
-
+template<typename System, typename precision = double>
+__global__ void do_step(System system, precision *args, const precision dx, const int n, const int size, const int args_number)
+{
+	for (int i = 0; i < size*n*args_number; i+=n*args_number)
+	{
+		RK4(system, &(args[i + threadIdx.x*args_number]), dx, n, args_number);
+	}
+}
 int main()
 {
+	//number of systems of equations
 	const int n = 2;
+	//number of points to be processed
 	const int size = 500;
+	//number of variable in one system
+	const int args_number = 3;
 
-	double *x = new double[n*size];
-	x[0] = double(1.0);
-	x[1] = double(4.0);
-	double *y = new double[n*size];
-	y[0] = double(1.0);
-	y[1] = double(16.0);
+	//Starting conditions
+	double *args = new double[n*size*args_number];
+	args[0] = double(1.0);
+	args[1] = double(1.0);
+	args[2] = double(1.0);
+
+	args[3] = double(4.0);
+	args[4] = double(9.0);
+	args[5] = double(16.0);
+
 	double h(1.0);
 
-	double*x_dev;
-	double*y_dev;
-	double*h_dev;
+	double *args_dev;
 
 	cudaSetDevice(0);
 
-	if ((cudaMalloc((void**)&x_dev, sizeof(double)*n*size) ||
-		cudaMalloc((void**)&y_dev, sizeof(double)*n*size) ||
-		cudaMalloc((void**)&h_dev, sizeof(h))) != cudaSuccess)
+	if (cudaMalloc((void**)&args_dev, sizeof(double)*n*size*args_number) != cudaSuccess)
 	{
 		std::cerr << "CUDA malloc error";
 		exit(-1);
 	}
 
-	if ((cudaMemcpy(x_dev, x, sizeof(double)*n*size, cudaMemcpyHostToDevice) ||
-		cudaMemcpy(y_dev, y, sizeof(double)*n*size, cudaMemcpyHostToDevice) ||
-		cudaMemcpy(h_dev, &h, sizeof(h), cudaMemcpyHostToDevice)) != cudaSuccess)
+	if (cudaMemcpy(args_dev, args, sizeof(double)*n*size*args_number, cudaMemcpyHostToDevice)  != cudaSuccess)
 	{
 		std::cerr << "CUDA mempcy error";
 		exit(-1);
 	}
 
 	Simple s;
-	do_step << <1, 2 >> > (s, x_dev, y_dev, h_dev, n, size);
+	do_step << <1, n >> > (s, args_dev, h, n, size, args_number);
 	cudaDeviceSynchronize();
 
-	if ((
-		cudaMemcpy(x, x_dev, sizeof(double)*n*size, cudaMemcpyDeviceToHost) ||
-		cudaMemcpy(y, y_dev, sizeof(double)*n*size, cudaMemcpyDeviceToHost)) != cudaSuccess)
+	if (cudaMemcpy(args, args_dev, sizeof(double)*n*size*args_number, cudaMemcpyDeviceToHost) != cudaSuccess)
 	{
 		std::cerr << "CUDA mempcy device to host error";
 		exit(-1);
 	}
 
-	cudaFree(x_dev);
-	cudaFree(y_dev);
-	cudaFree(h_dev);
+	cudaFree(args_dev);
 
-	for (int u = 0; u < n*size; u += 2)
+	for (int i = 0; i < n*size*args_number; i ++)
 	{
-		std::cout << x[u];
+		std::cout << args[i];
 		std::cout << "    ";
-		std::cout << y[u];
-		std::cout << "    ";
-		std::cout << y[u + 1];
-		std::cout << "    ";
-		std::cout << std::endl;
+		if ((i+1) % (n*args_number) == 0)
+		{
+			std::cout << std::endl;
+		}
 	}
+	delete[] args;
 }
