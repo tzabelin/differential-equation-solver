@@ -5,8 +5,8 @@
 
  1)Git
  
- 2)NVIDIA CUDA
+ 2)NVIDIA CUDA 10 or higher
 
 # Installation
 
- run *nvcc kernel.cu RK.cu* in the src folder
+ run *nvcc kernel.cu RK.cu* with appropriate *--arch* and *-gencode* in the src folder
