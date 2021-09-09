@@ -2,7 +2,7 @@
 // Microsoft Visual C++ generated include file.
 // Used by KerrTrajectory.rc
 
-// Следующие стандартные значения для новых объектов
+// Г‘Г«ГҐГ¤ГіГѕГ№ГЁГҐ Г±ГІГ Г­Г¤Г Г°ГІГ­Г»ГҐ Г§Г­Г Г·ГҐГ­ГЁГї Г¤Г«Гї Г­Г®ГўГ»Гµ Г®ГЎГєГҐГЄГІГ®Гў
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
