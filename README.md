@@ -1,2 +1,12 @@
 # differential-equation-solver
-Simple solver for system of differential equations in parallel. It produces array of dots that can be visualized using different plotters such as gnuplot.
+ Simple solver for system of differential equations in parallel. It produces array of dots that can be visualized using different plotters such as gnuplot.
+
+# Prerequisites
+
+ 1)Git
+ 
+ 2)NVIDIA CUDA
+
+# Installation
+
+ run *nvcc kernel.cu RK.cu* in the project root
