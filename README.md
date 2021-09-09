@@ -9,4 +9,4 @@
 
 # Installation
 
- run *nvcc kernel.cu RK.cu* in the project root
+ run *nvcc kernel.cu RK.cu* in the src folder
