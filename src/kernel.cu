@@ -17,9 +17,10 @@ __global__ void do_step(System system, precision *args, const precision dx, cons
 {
 	for (int i = 0; i < size*n*args_number; i+=n*args_number)
 	{
-		RK4(system, &(args[i + threadIdx.x*args_number]), dx, n, args_number);
+		RK2(system, &(args[i + threadIdx.x*args_number]), dx, n, args_number);
 	}
 }
+
 int main()
 {
 	//number of systems of equations
