@@ -9,4 +9,8 @@
 
 # Installation
 
- run *nvcc kernel.cu RK.cu* with appropriate *--arch* and *-gencode* in the src folder
+ 1)Compile RK.cu and kernel.cu using nvcc
+ 
+ 2)Compile trajectory.cpp
+ 
+ 3)Link object files
