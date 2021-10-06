@@ -28,7 +28,7 @@ void KerrTrajectory::initial_conditions(double r_0, double b_y, double b_z, doub
 	y[0] = double(0.0); //set independent variable to 0
 	y[1] = 1.0 / r0;
 	y[2] = 1.0 + (pow(a, 2) - pow(y[8], 2) - y[7]) / pow(r0, 2) + 2.0*(pow((a - y[8]), 2) + y[7]) / pow(r0, 3) - pow(a, 2) * y[7] / pow(r0, 4);
-	if (y[2] < 1 - 8)
+	if (y[2] < pow(0.1, 8))
 	{
 		y[2] = 0.0;
 	}
