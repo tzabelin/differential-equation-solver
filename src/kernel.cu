@@ -33,7 +33,7 @@ __global__ void do_step(System system, precision* args, precision* k_prev, const
 int main()
 {
 	//number of systems of equations
-	const int n = 4;
+	const int n = 55;
 	//number of points to be processed
 	const int size = 1200;//00
 	//number of variable in one system, including independent
@@ -49,6 +49,57 @@ int main()
 	trajectory.initial_conditions(150, 1.0, 1.0, 3.141592653589793238 / 2, &(args[args_number]));
 	trajectory.initial_conditions(2000, -1.0, 1.0, 3.141592653589793238 / 2, &(args[args_number*2]));
 	trajectory.initial_conditions(300, 1.0, -1.0, 3.141592653589793238 / 2, &(args[args_number*3]));
+trajectory.initial_conditions(250, 0.5, 2.3, 3.141592653589793238 / 2, &(args[args_number*4]));
+trajectory.initial_conditions(1800, -0.8, -1.5, 3.141592653589793238 / 2, &(args[args_number*5]));
+trajectory.initial_conditions(500, 1.2, -2.0, 3.141592653589793238 / 2, &(args[args_number*6]));
+trajectory.initial_conditions(700, -1.7, 0.7, 3.141592653589793238 / 2, &(args[args_number*7]));
+trajectory.initial_conditions(1200, 0.3, 0.9, 3.141592653589793238 / 2, &(args[args_number*8]));
+trajectory.initial_conditions(800, -0.6, -1.8, 3.141592653589793238 / 2, &(args[args_number*9]));
+trajectory.initial_conditions(600, 1.5, 2.5, 3.141592653589793238 / 2, &(args[args_number*10]));
+trajectory.initial_conditions(1100, -1.1, 1.7, 3.141592653589793238 / 2, &(args[args_number*11]));
+trajectory.initial_conditions(350, 0.9, -0.3, 3.141592653589793238 / 2, &(args[args_number*12]));
+trajectory.initial_conditions(900, -0.2, 1.4, 3.141592653589793238 / 2, &(args[args_number*13]));
+trajectory.initial_conditions(400, 1.8, -1.2, 3.141592653589793238 / 2, &(args[args_number*14]));
+trajectory.initial_conditions(1600, -1.5, 0.1, 3.141592653589793238 / 2, &(args[args_number*15]));
+trajectory.initial_conditions(1000, 0.7, 1.3, 3.141592653589793238 / 2, &(args[args_number*16]));
+trajectory.initial_conditions(1400, -0.4, -2.3, 3.141592653589793238 / 2, &(args[args_number*17]));
+trajectory.initial_conditions(1300, 1.6, 0.5, 3.141592653589793238 / 2, &(args[args_number*18]));
+trajectory.initial_conditions(1700, -1.4, 1.1, 3.141592653589793238 / 2, &(args[args_number*19]));
+trajectory.initial_conditions(1350, 0.1, -1.6, 3.141592653589793238 / 2, &(args[args_number*20]));
+trajectory.initial_conditions(950, -0.9, 2.0, 3.141592653589793238 / 2, &(args[args_number*21]));
+trajectory.initial_conditions(750, 1.3, -0.5, 3.141592653589793238 / 2, &(args[args_number*22]));
+trajectory.initial_conditions(2200, -1.2, 0.3, 3.141592653589793238 / 2, &(args[args_number*23]));
+trajectory.initial_conditions(1750, 0.2, -0.7, 3.141592653589793238 / 2, &(args[args_number*24]));
+trajectory.initial_conditions(850, -1.6, 1.9, 3.141592653589793238 / 2, &(args[args_number*25]));
+trajectory.initial_conditions(1150, 0.8, -1.4, 3.141592653589793238 / 2, &(args[args_number*26]));
+trajectory.initial_conditions(1650, -0.5, 1.2, 3.141592653589793238 / 2, &(args[args_number*27]));
+trajectory.initial_conditions(1050, 1.4, -0.9, 3.141592653589793238 / 2, &(args[args_number*28]));
+trajectory.initial_conditions(1450, -0.3, 2.0, 3.141592653589793238 / 2, &(args[args_number*29]));
+trajectory.initial_conditions(1850, 0.6, -1.1, 3.141592653589793238 / 2, &(args[args_number*30]));
+trajectory.initial_conditions(950, -1.5, 1.8, 3.141592653589793238 / 2, &(args[args_number*31]));
+trajectory.initial_conditions(1350, 0.4, -1.3, 3.141592653589793238 / 2, &(args[args_number*32]));
+trajectory.initial_conditions(1750, -0.2, 1.5, 3.141592653589793238 / 2, &(args[args_number*33]));
+trajectory.initial_conditions(1950, 0.9, -1.6, 3.141592653589793238 / 2, &(args[args_number*34]));
+trajectory.initial_conditions(1250, -1.1, 1.7, 3.141592653589793238 / 2, &(args[args_number*35]));
+trajectory.initial_conditions(1650, 0.7, -0.8, 3.141592653589793238 / 2, &(args[args_number*36]));
+trajectory.initial_conditions(2050, -0.4, 2.1, 3.141592653589793238 / 2, &(args[args_number*37]));
+trajectory.initial_conditions(1450, 1.1, -1.0, 3.141592653589793238 / 2, &(args[args_number*38]));
+trajectory.initial_conditions(1850, -0.6, 1.6, 3.141592653589793238 / 2, &(args[args_number*39]));
+trajectory.initial_conditions(1550, 0.3, -1.2, 3.141592653589793238 / 2, &(args[args_number*40]));
+trajectory.initial_conditions(1950, -0.8, 1.3, 3.141592653589793238 / 2, &(args[args_number*41]));
+trajectory.initial_conditions(2150, 1.2, -1.7, 3.141592653589793238 / 2, &(args[args_number*42]));
+trajectory.initial_conditions(1050, -0.9, 1.4, 3.141592653589793238 / 2, &(args[args_number*43]));
+trajectory.initial_conditions(1550, 0.5, -1.5, 3.141592653589793238 / 2, &(args[args_number*44]));
+trajectory.initial_conditions(1950, -1.0, 1.9, 3.141592653589793238 / 2, &(args[args_number*45]));
+trajectory.initial_conditions(2250, 1.0, -1.8, 3.141592653589793238 / 2, &(args[args_number*46]));
+trajectory.initial_conditions(1150, -0.7, 1.6, 3.141592653589793238 / 2, &(args[args_number*47]));
+trajectory.initial_conditions(1750, 0.8, -1.3, 3.141592653589793238 / 2, &(args[args_number*48]));
+trajectory.initial_conditions(2050, -0.5, 1.7, 3.141592653589793238 / 2, &(args[args_number*49]));
+trajectory.initial_conditions(1350, 1.3, -1.2, 3.141592653589793238 / 2, &(args[args_number*50]));
+trajectory.initial_conditions(1950, -0.6, 1.8, 3.141592653589793238 / 2, &(args[args_number*51]));
+trajectory.initial_conditions(1850, 0.7, -1.5, 3.141592653589793238 / 2, &(args[args_number*52]));
+trajectory.initial_conditions(2150, -0.8, 1.4, 3.141592653589793238 / 2, &(args[args_number*53]));
+trajectory.initial_conditions(2250, 0.9, -1.6, 3.141592653589793238 / 2, &(args[args_number*54]));
 
 
 

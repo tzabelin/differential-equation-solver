@@ -9,7 +9,7 @@ struct  KerrTrajectory
 	const double a = 0.9982;
 
 	/*operator () defines system of differential equations*/
-	__device__ void KerrTrajectory::operator()(const double *args, double *k)
+	__device__ void operator()(const double *args, double *k)
 	{
 		k[0] = args[2];
 		k[1] = -2 * a * a * args[7] * args[1] * args[1] * args[1] + 3 * ((a - args[8])*(a - args[8]) + args[7]) * args[1] * args[1] + (a * a - args[8] * args[8] - args[7]) * args[1];
@@ -21,7 +21,7 @@ struct  KerrTrajectory
 		k[7] = 0;
 	}
 
-	__host__ void KerrTrajectory::initial_derivatives(const double* args, double* k)
+	__host__ void initial_derivatives(const double* args, double* k)
 	{
 		k[0] = args[2];
 		k[1] = -2 * a * a * args[7] * args[1] * args[1] * args[1] + 3 * ((a - args[8]) * (a - args[8]) + args[7]) * args[1] * args[1] + (a * a - args[8] * args[8] - args[7]) * args[1];

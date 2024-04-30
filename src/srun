@@ -1,0 +1,10 @@
+#!/bin/bash
+#SBATCH --job-name=myTest
+#SBATCH --account=project_2010356
+#SBATCH --time=00:15:00
+##SBATCH --mem-per-cpu=2G
+#SBATCH --partition=gpu
+##SBATCH --mail-type=BEGIN #uncomment to enable mail
+#SBATCH --gres=gpu:v100:1
+
+srun output -o output.dat
