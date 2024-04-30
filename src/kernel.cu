@@ -35,7 +35,7 @@ int main()
 	//number of systems of equations
 	const int n = 55;
 	//number of points to be processed
-	const int size = 1200;//00
+	const int size = 12000;//00
 	//number of variable in one system, including independent
 	const int args_number = 9;
 
@@ -150,7 +150,7 @@ trajectory.initial_conditions(2250, 0.9, -1.6, 3.141592653589793238 / 2, &(args[
 			if (is_feasible[j] = true)
 			{
 				R = 1 / (args[i + 1 + j * args_number] * 2);
-				if (R > 5000)
+				if (R > 500)
 					is_feasible[j] = false;
 				x = R * cos(args[i + 3 + j * args_number]) * sin(args[i + 5 + j * args_number]);
 				y = R * sin(args[i + 3 + j * args_number]) * sin(args[i + 5 + j * args_number]);
