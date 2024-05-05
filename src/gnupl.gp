@@ -1,5 +1,5 @@
 set terminal pngcairo enhanced font 'Verdana,10'
-set output '3dplot_multiple_trajectories.png'
+set output '3dplot_multiple_trajectories_Y.png'
 
 # Set the labels
 set xlabel 'X-axis'
@@ -13,7 +13,7 @@ set title '3D Plot of 55 Trajectories'
 set grid
 
 # Set 3D view
-set view 60, 30, 1, 1
+set view 0,270
 splot \
   'output.dat' using 1:2:3 with lines title '', \
   'output.dat' using 4:5:6 with lines title '', \
