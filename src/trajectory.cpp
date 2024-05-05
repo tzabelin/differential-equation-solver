@@ -11,8 +11,8 @@ void KerrTrajectory::initial_conditions(double r_0, double b_y, double b_z, doub
 	double rho2 = pow(r0, 2) + pow(a, 2) * pow(cos(theta0), 2);
 	double rho = sqrt(rho2);
 	double Delta = pow(r0, 2) - 2.0*r0 + pow(a, 2);
-	double by = 200.0*b_y;
-	double bz = 200.0*b_z;
+	double by = 20.0*b_y;
+	double bz = 20.0*b_z;
 
 
 	p[0] = 1.0 / rho * ((pow(r0, 2) + pow(a, 2)) / sqrt(Delta) + a * by*sin(theta0) / sqrt(pow(by, 2) + bz * 82 + pow(r0, 2)));
