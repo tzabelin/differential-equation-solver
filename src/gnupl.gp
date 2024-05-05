@@ -13,7 +13,7 @@ set title '3D Plot of 55 Trajectories'
 set grid
 
 # Set 3D view
-set view 0,270
+set view 90,0,1,1
 splot \
   'output.dat' using 1:2:3 with lines title '', \
   'output.dat' using 4:5:6 with lines title '', \
