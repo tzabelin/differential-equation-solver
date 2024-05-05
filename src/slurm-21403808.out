@@ -1,3 +1,0 @@
-srun: error: r17g07: task 0: Exited with exit code 13
-srun: Terminating StepId=21403808.0
-slurmstepd: error: execve(): output: Permission denied
