@@ -35,7 +35,7 @@ int main()
 	//number of systems of equations
 	const int n = 55;
 	//number of points to be processed
-	const int size = 60;//00
+	const int size = 600;//00
 	//number of variable in one system, including independent
 	const int args_number = 9;
 
